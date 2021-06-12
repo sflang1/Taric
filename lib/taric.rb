@@ -1,5 +1,4 @@
 require 'singleton'
-require 'pry'
 require_relative 'taric/client'
 require_relative 'taric/constants'
 

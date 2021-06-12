@@ -1,12 +1,15 @@
 require 'faraday'
 require_relative 'api/summoner'
+require_relative 'api/league-v4'
 require_relative 'exceptions'
-require 'pry'
+require_relative 'validations'
 require 'json'
 
 class Taric
   class Client
     include Summoner
+    include Leaguev4
+    include Validations
 
     def initialize(key)
       create_faraday_connection(key)

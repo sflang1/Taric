@@ -1,5 +1,3 @@
-require 'pry'
-
 class Taric
   class NoValidApiKey < StandardError; end
 
