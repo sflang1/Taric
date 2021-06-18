@@ -5,5 +5,5 @@ Gem::Specification.new do |s|
   s.description   = 'Taric is a library that provides a simple interface for interacting with the Riot Developer API'
   s.authors       = ['Sebastián Landínez']
   s.email         = 'slandinezg@gmail.com'
-  s.files         = ["{lib}/**/*.rb"]
+  s.files         = ['{lib}/**/*.rb']
 end

@@ -19,16 +19,19 @@ class Taric
       create_faraday_connection(key)
     end
 
-    def perform(url)
-      raise Taric::NoValidApiKey.new('No API key has been provided') if @connection.headers['X-Riot-Token'].length == 0
+    def perform(**kwargs)
+      raise Taric::NoValidApiKey, 'No API key has been provided' if @connection.headers['X-Riot-Token'].empty?
 
+      validate(kwargs)
+      url = yield
       response = @connection.get(url)
       return JSON.parse(response.body) if response.status == 200
 
-      raise Taric::UnsuccessfulRequest.new(custom_message(response))
+      raise Taric::UnsuccessfulRequest, custom_message(response)
     end
 
     private
+
     def custom_message(response)
       case response.status
       when 400
